@@ -267,11 +267,11 @@ MonoBehaviour:
   showSpheres: 1
   numToSpawn: {x: 10, y: 10, z: 10}
   boxSize: {x: 4, y: 10, z: 3}
-  spawnCenter: {x: 0, y: 0, z: 0}
+  spawnCenter: {x: 0, y: 4, z: 0}
   particleRadius: 0.1
-  particleMesh: {fileID: 0}
+  particleMesh: {fileID: 2540817853737639666, guid: d2bcb9b63a067d643b56910fd449b51b, type: 3}
   particleRenderSize: 8
-  material: {fileID: 0}
+  material: {fileID: 2100000, guid: 11a333793503349f79818ce368156b03, type: 2}
   shader: {fileID: 0}
   particles: []
 --- !u!1 &705507993
