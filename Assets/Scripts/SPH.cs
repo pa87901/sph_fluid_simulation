@@ -95,6 +95,13 @@ public class SPH : MonoBehaviour
         SetupComputeBuffers();
     }
 
+    private void FixedUpdate() {
+        shader.SetVector("boxSize", boxSize);
+        shader.SetFloat("timestep", timestep);
+
+        shader.Dispatch(integrateKernel, totalParticles / 100, 1, 1);
+    }
+
     private void SpawnParticlesInBox() {
         Vector3 spawnPoint  = spawnCenter;
         List<Particle> _particles = new List<Particle>();
