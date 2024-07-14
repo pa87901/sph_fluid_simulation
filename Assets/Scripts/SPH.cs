@@ -26,6 +26,7 @@ public class SPH : MonoBehaviour
     public Vector3 boxSize = new Vector3(4, 10, 3);
     public Vector3 spawnCenter;
     public float particleRadius = 0.1f;
+    public float spawnJitter = 0.2f;
 
     [Header("Particle Rendering")]
     public Mesh particleMesh;
@@ -69,6 +70,7 @@ public class SPH : MonoBehaviour
             for (int y = 0; y < numToSpawn.y; y++) {
                 for (int z = 0; z < numToSpawn.z; z++) {
                     Vector3 spawnPos = spawnPoint + new Vector3(x * particleRadius * 2, y * particleRadius * 2, z * particleRadius * 2);
+                    spawnPos += Random.onUnitSphere * particleRadius * spawnJitter;
                     Particle p  = new Particle {
                         position = spawnPos
                     };
