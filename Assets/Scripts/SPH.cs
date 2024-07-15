@@ -48,7 +48,7 @@ public class SPH : MonoBehaviour
 
     // Private variables
     private ComputeBuffer _argsBuffer;
-    private ComputeBuffer _particlesBuffer;
+    public ComputeBuffer _particlesBuffer;
     private int integrateKernel;
     private int computeForceKernel;
     private int densityPressureKernel;
