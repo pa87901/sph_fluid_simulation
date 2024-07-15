@@ -31,7 +31,7 @@ float sphereRadius;
 
 [numthreads(100,1,1)]
 void Integrate (uint3 id: SV_DISPATCHTHREADID) {
-    _particles[id.x].currentForce = float3(0, (-9.81 * particleMass), 0);
+    // _particles[id.x].currentForce = float3(0, (-9.81 * particleMass), 0);
 
     // Next tow lines is basically F = ma.
     float3 vel = _particles[id.x].velocity + ((_particles[id.x].currentForce/particleMass) * timestep);
@@ -149,13 +149,11 @@ void ComputeForces (uint3 id: SV_DISPATCHTHREADID) {
 
     // Handle Collision, e.g. from the collision test sphere.
     float3 collisionDirection = _particles[id.x].position - spherePos;
+
     if (length(collisionDirection) < sphereRadius) {
-        _particles[id.x].currentForce += collisionDirection * 300;
+        // float mag = sphereRadius/length(collisionDirection);
+        _particles[id.x].currentForce += collisionDirection * 10000;
     }
-    // if (length(colDir) < sphereRadius) {
-    //     float mag = sphereRadius/length(colDir);
-    //     _particles[id.x].currentForce += colDir*300*mag;
-    // }
 
     // + pressure + visc/_particles[id.x].density;
 }
