@@ -31,7 +31,7 @@ float sphereRadius;
 
 [numthreads(100,1,1)]
 void Integrate (uint3 id: SV_DISPATCHTHREADID) {
-    // _particles[id.x].currentForce = float3(0, (-9.81 * particleMass), 0);
+    // _particles[id.x].currentForce = float3(0, (-9.81 * particleMass), 0); // Gravity before other forces for testing only. Leave commented out.
 
     // Next tow lines is basically F = ma.
     float3 vel = _particles[id.x].velocity + ((_particles[id.x].currentForce/particleMass) * timestep);
