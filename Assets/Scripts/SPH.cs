@@ -16,6 +16,7 @@ public struct Particle {
 public class SPH : MonoBehaviour
 {
     [Header("General")]
+    public Transform collisionSphere;
     public bool showSpheres = true;
     public Vector3Int numToSpawn = new Vector3Int(10, 10, 10);
     private int totalParticles {
@@ -103,6 +104,8 @@ public class SPH : MonoBehaviour
     private void FixedUpdate() {
         shader.SetVector("boxSize", boxSize);
         shader.SetFloat("timestep", timestep);
+        shader.SetVector("spherePos", collisionSphere.transform.position);
+        shader.SetFloat("sphereRadius", collisionSphere.transform.localScale.x / 2);
 
         // Total Particles has to be divisible by 100.
         shader.Dispatch(densityPressureKernel, totalParticles / 100, 1, 1);
