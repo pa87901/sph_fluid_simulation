@@ -156,7 +156,11 @@ public class SPH : MonoBehaviour
     // Native method. Define the box for the SPH simulator that will bound the spawned particles and fluid.
     private void OnDrawGizmos() {
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireCube(Vector3.zero, boxSize);
+        Gizmos.DrawWireCube(
+            // Vector3.zero,
+            transform.position,
+            boxSize
+            );
 
         if (!Application.isPlaying) {
             Gizmos.color = Color.cyan;
